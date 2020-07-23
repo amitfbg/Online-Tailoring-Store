@@ -22,5 +22,15 @@ public class Demo_Controller {
 		System.out.println("here in LOgin");
 		return "login";
 	}
+	@RequestMapping("/ApparelCat")
+	public String test2() {
+		System.out.println("here in Apparel catogery");
+		return "ApparelCat";
+	}
+	@RequestMapping("/ApparelView")
+	public String test3() {
+		System.out.println("here in Apparel view");
+		return "ApparelView";
+	}
 
 }
