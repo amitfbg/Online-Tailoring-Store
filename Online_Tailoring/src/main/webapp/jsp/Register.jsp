@@ -115,25 +115,25 @@ input[type=submit]:hover {
 		<li style="float: right"><a class="active" href="Register">Register</a></li>
 	</ul>
 	<h1 align="center">Registration</h1>
-	<form action="login">
+	<form action="save" method="post">
 		<div class="centered">
 
 			<table>
 				<tr>
 					<td>First name:</td>
-					<td><input type="text" placeholder="First name" name="fname"
-						id="fname" required /></td>
+					<td><input type="text" placeholder="First name" name="FName"
+						id="FName" required /></td>
 				</tr>
 
 				<tr>
 					<td>Last name:</td>
-					<td><input type="text" placeholder="Last name" name="lname"
-						id="lname" required /></td>
+					<td><input type="text" placeholder="Last name" name="LName"
+						id="LName" required /></td>
 				</tr>
 
 				<tr>
 					<td>Sex:</td>
-					<td><input type="text" placeholder="Sex" name="sex" id="sex"
+					<td><input type="text" placeholder="Sex" name="Sex" id="Sex"
 						required /></td>
 				</tr>
 
@@ -146,25 +146,25 @@ input[type=submit]:hover {
 				<tr>
 					<td>Phone Number:</td>
 					<td><input type="number" placeholder="Phone Number"
-						name="phonenumber" id="phonenumber" required /></td>
+						name="PhoneNumber" id="PhoneNumber" required /></td>
 				</tr>
 
 				<tr>
 					<td>Address:</td>
-					<td><input type="text" placeholder="Address" name="address"
-						id="address" required /></td>
+					<td><input type="text" placeholder="Address" name="Address"
+						id="Address" required /></td>
 				</tr>
 
 				<tr>
 					<td>User Id:</td>
 					<td><input type="email" placeholder="Enter email"
-						name="userid" id="userid" required /></td>
+						name="UserId" id="UserId" required /></td>
 				</tr>
 
 				<tr>
 					<td>Password:</td>
 					<td><input type="password" placeholder="Enter password"
-						name="password" id="password" required /></td>
+						name="Password" id="Password" required /></td>
 				</tr>
 
 
