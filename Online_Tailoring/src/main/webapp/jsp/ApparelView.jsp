@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Apparel View</title>
 <style>
 table {
-  width:100%;
+  width:70%;
 }
 table, th, td {
   border: 1px solid black;
@@ -76,29 +78,18 @@ h1 {
 		<li style="float: right"><a href="logout">Logout</a></li>
 	</ul>
 
-<h1 align="center">Apparel Tables</h1>
-<table id="t01">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table>
+<h1 align="center">Apparel Tables</h1> 
+<table id="t01"  >  
+<tr><th>Apparel Id</th><th>Apparel Type</th><th>Gender</th><th>Select</th></tr>  
+   <c:forEach var="app" items="${list}">   
+   <tr>  
+   <td>${app.apparelId}</td>  
+   <td>${app.apparelType}</td>  
+   <td>${app.gender}</td>   
+   <td><a href="editemp/${app.apparelId}">Select</a></td>   
+   </tr>  
+   </c:forEach>  
+   </table> 
 
 
 </body>

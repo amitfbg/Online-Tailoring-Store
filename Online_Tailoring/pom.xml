@@ -38,10 +38,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-    <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-jasper</artifactId>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
     <version>9.0.36</version>
 </dependency>
+
 		<dependency>
     	<groupId>javax.servlet</groupId>
     	<artifactId>jstl</artifactId>

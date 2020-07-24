@@ -79,12 +79,12 @@ li a:hover:not (.active ) {
 
 	<div class="row">
 		<div class="column">
-			<button>Men</button>
+		<a href="/ApparelView/Men">	<button>Men</button> </a>
 			<img alt="Men" src="../images/men.jpg" style="width: 95%">
 
 		</div>
 		<div class="column">
-			<button>Women</button>
+			<a href="/ApparelView/Women"><button>Women</button> </a>
 			<img alt="Women" src="../images/women.jpg" style="width: 90%">
 
 		</div>

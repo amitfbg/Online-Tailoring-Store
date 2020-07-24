@@ -1,17 +1,17 @@
 package com.Online_Tailoring.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.Online_Tailoring.DAO.ApparelDAO;
 import com.Online_Tailoring.DAO.UserDAO;
+import com.Online_Tailoring.Model.Apparel;
 import com.Online_Tailoring.Model.Customer;
 
 
@@ -20,6 +20,9 @@ public class Demo_Controller {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private ApparelDAO apparelDao;
 	
 	@RequestMapping("main")
 	public String test() {
@@ -57,8 +60,11 @@ public class Demo_Controller {
 		return "ApparelCat";
 	}
 	@RequestMapping("/ApparelView")
-	public String test3() {
+	public String ApparelView(Model m) {
 		System.out.println("here in Apparel view");
+		List<Apparel> list = apparelDao.getApparel();
+		m.addAttribute("list",list);
+		System.out.println(list);
 		return "ApparelView";
 	}
 
