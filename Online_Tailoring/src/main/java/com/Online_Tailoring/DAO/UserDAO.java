@@ -37,5 +37,21 @@ public class UserDAO {
 			return 0;
 		}
 	}
+	
+	public String loginUser(Customer user) {
+		
+		String sql = "SELECT UserId FROM CUSTOMER WHERE UserId=? AND Password=?";
+		
+		try {
+
+			String userId = jdbcTemplate.queryForObject(sql, new Object[] {
+					user.getUserId(), user.getPassword() }, String.class);
+
+			return userId;
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }

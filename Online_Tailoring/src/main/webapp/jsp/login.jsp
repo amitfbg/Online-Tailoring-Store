@@ -9,7 +9,7 @@
 <title>Log In</title>
 <style type="text/css">
 body {
-	background-image: url(../images/Register.jpg);
+	background-image: url(../images/Login.jpg);
 	position: relative;
 	padding-top: 20px;
 	background-color: black;
@@ -96,24 +96,28 @@ input[type=submit]:hover {
 		<li style="float: right"><a href="Register">Register</a></li>
 	</ul>
 	<h1 align="center">Login</h1>
-	<form action="main">
+	<form action="login" method="post">
 		<div class="centered">
 			<table>
 				<tr>
 					<td>User Id:</td>
 					<td><input type="email" placeholder="Enter email"
-						name="userid" id="userid" required /></td>
+						name="UserId" id="UserId" required /></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
 					<td><input type="password" placeholder="Enter password"
-						name="password" id="password" required /></td>
+						name="Password" id="Password" required /></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="Submit" /></td>
 					<td><input type="reset" value="Reset" /></td>
 				</tr>
+				<tr>
+				<td><h3>${ms}</h3></td>
+				</tr>
+				
 			</table>
 
 		</div>
