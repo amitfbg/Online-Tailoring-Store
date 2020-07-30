@@ -48,10 +48,12 @@ li a:hover:not (.active ) {
 </head>
 <body>
 <ul>
+		
 		<li><a class="active">Success</a></li>
 		<li><a href="ApparelView">Home</a></li>
 		<li><a href="orders">Orders</a></li>
 		<li style="float: right"><a href="logout">Logout</a></li>
 	</ul>
+	
 </body>
 </html>

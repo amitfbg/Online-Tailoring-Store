@@ -63,18 +63,17 @@ public class Demo_Controller {
 
 	@RequestMapping(value = "/login" ,method = RequestMethod.POST )
 	public ModelAndView Login(@RequestParam(required = false, name = "UserId") String email,
-			@RequestParam(required = false, name = "Password") String password,HttpSession ses,HttpServletRequest request) {
+			@RequestParam(required = false, name = "Password") String password,HttpSession ses) {
 		ModelAndView mv = new ModelAndView();	
 		Customer user = new Customer();
 		user.setUserId(email);
 		user.setPassword(password);
-		System.out.println(user.toString());
+		//System.out.println(user.toString());
 		String name = userDao.loginUser(user);
-		System.out.println(name);
+		//System.out.println(name);
 		if (email == null || password == null) {
 			mv.setViewName("login");
 		} else if (name != null) {
-			ses=request.getSession();
 			ses.setAttribute("user",user);
 			mv.setViewName("redirect:/ApparelView");
 		} else {
@@ -102,37 +101,43 @@ public class Demo_Controller {
 
 	@RequestMapping("/Cart")
 	public String showCart(Model m, HttpSession ses) {
+		if(ses.getAttribute("user")==null)
+		{
+			return "redirect:/login";
+		}
+		else {
 		m.getAttribute("cartlist");
 		ses.getAttribute("cartlist");
 		return "Cart";
+		}
 	}
 	
 	@RequestMapping(value="/success")
 	public String AddCart(Model m, HttpSession ses) {
+		if(ses.getAttribute("user")==null)
+		{
+			return "redirect:/login";
+		}else {
 		Customer c=(Customer) ses.getAttribute("user");
 		System.out.println(c.toString());
 		Cart_Apparel citems=(Cart_Apparel) ses.getAttribute("cartitems");
 		System.out.println(citems.toString());		
 		cartapparelDao.registerCustomer(citems,c);
-		ses.removeAttribute("cartitems");
-		return "success";
+		ses.removeAttribute("cartlist");
+		return "success";}
 	}
 
 	@RequestMapping("/ApparelView")
-	public String ApparelView(HttpSession ses,HttpServletRequest request) {
+	public String ApparelView(HttpSession ses) {
 		System.out.println("here in Apparel view");
-		ses=request.getSession(false);
-		if(ses == null)
+		if(ses.getAttribute("user")==null)
 		{
-			System.out.println(ses);
 			System.out.println("here session not start");
-			//return "ApparelView";
-			return "login";
+			return "redirect:/login";
 		}
 		else
 		{
 			System.out.println("here session start");
-			//return "login";
 			return "ApparelView";
 		}
 	}
@@ -140,20 +145,29 @@ public class Demo_Controller {
 	@RequestMapping("/logout")
 		public String Logout(HttpSession ses)
 		{
+		if(ses.getAttribute("user")==null)
+		{
+			return "redirect:/login";
+		}
+		else {
 			ses.removeAttribute("cartitems");
 			ses.removeAttribute("user");
 			ses.invalidate();
 			System.out.println("logout");
-			return "main";
+			return "redirect:/main";}
 		}
 	
 	@RequestMapping("/orders")
 	public String getOrder(HttpSession ses,Model m) {
+		if(ses.getAttribute("user")==null)
+		{
+			return "redirect:/login";
+		}else {
 		Customer c=(Customer) ses.getAttribute("user");
 		List<Cart_Apparel> list=odao.getApparel(c);
 		m.addAttribute("list",list);
 		System.out.println(list);
-		return "order";
+		return "order";}
 	}
 	
 

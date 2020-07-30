@@ -9,9 +9,18 @@
 <title>Cart</title>
 <script type="text/javascript">
 function myFunction() {
-	confirm("Press ok to confirm your order");
-	window.location.href = "success";
-	return false;
+
+	var cart='<%= session.getAttribute("cartlist") %>';
+	if(cart=="null")
+		{
+		alert("Cart is Empty!!!!");
+		return false;		
+		}
+	else
+		{
+		if(!confirm("Press ok to confirm your order\nOnce your order is placed it will be delivered to you within 7 days") )
+			return false;
+		}
 }
 </script>
 <style>
@@ -82,6 +91,20 @@ h1 {
 	color: orange;
 }
 
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
 </style>
 </head>
 <body>
@@ -109,9 +132,13 @@ h1 {
    </tr>  
    </c:forEach>  
    </table>
+   <br>
+   <br>
+   <div align="center">
    <form action="success" >
-   <input type="submit" value="Place Order" onClick="myFunction()">
+   <input  type="submit" value="Place Order" onClick="return myFunction()">
    </form>
+   </div>
 
 </head>
 <body>
